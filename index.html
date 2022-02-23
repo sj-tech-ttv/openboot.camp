@@ -61,33 +61,6 @@ sitemap:
 								<p>How do we plan to stay in existence in the face of Big Bootcamp? Through the kindness and compassion of companies that benefit from our work and students who have completed our course. We work based on donations. Right now, we’re in beta (or really, pre-alpha, as we have no content whatsoever) but someday we will start asking for donations.</p>
 							</article>
 
-						<!-- Posts -->
-							<section class="posts">
-                {% for post in site.posts limit:3 %}
-                {% assign mod3 = forloop.index | modulo: 3 %}
-  								<article>
-  									<header>
-  										<span class="date">{{ post.date | date_to_string }}</span>
-  										<h2><a href="{{ post.url | absolute_url }}">{{ post.title }}</a></h2>
-  									</header>
-  									<a href="{{ post.url | absolute_url }}" class="image fit"><img src="{{ post.image | absolute_url }}" alt="" /></a>
-  									<p>{{ post.excerpt }}</p>
-  									<ul class="actions">
-  										<li><a href="{{ post.url | absolute_url }}" class="button">Full Story</a></li>
-  									</ul>
-  								</article>
-                  {% if mod3 == 0 %}
-                  <article>
-  									<header>
-  										<h2><a href="#">Sponsored</a></h2>
-  									</header>
-
-  								</article>
-                  {% endif %}
-                {% endfor %}
-
-							</section>
-
 						<!-- Footer -->
 							<footer>
                 <ul class="actions">

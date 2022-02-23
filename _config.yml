@@ -1,7 +1,7 @@
 # Site
 title:              OpenBootCamp
-bio:                ''
-description:        ''
+bio:                'Jumpstart your career!'
+description:        'Jumpstart your career!'
 locale:             en_US
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://openboot.camp" # the base hostname & protocol for your site
@@ -11,15 +11,8 @@ disqus_shortname:   default
 
 # Social
 analytics-id:       "default"
-twitter:            default
-facebook:           default
-instagram:          default
-github:             default
-
-# personal
-location:           Los Angeles, CA
-phone:              310-318-5555
-email:              info@default.com # change this to your email to receive free emails for your contact submissions via Slapform.com
+twitter:            sj_ttv
+github:             sj-tech-ttv
 
 # Other
 background_image:   /images/bg.jpg
@@ -60,9 +53,6 @@ gems:
 
 paginate: 6
 paginate_path: "/blog/page:num/"
-
-jekyll-mentions:
-    base_url: https://github.com
 
 # Exclude list
 exclude: [README.md, Gemfile, Gemfile.lock, node_modules, gulpfile.js, package.json, _site, src, vendor, CNAME, LICENSE, Rakefile, old]
