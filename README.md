@@ -1,2 +1,1 @@
-# openboot.camp
-OpenBootCamp website
+This is the website for openboot.camp
