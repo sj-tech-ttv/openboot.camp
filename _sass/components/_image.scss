@@ -56,6 +56,7 @@
 			display: block;
 			margin: (_size(element-margin) * 2) 0;
 			width: 100%;
+			filter: blur(1px);
 
 			&:first-child {
 				margin-top: 0;
@@ -79,6 +80,7 @@
 
 	a.image {
 		overflow: hidden;
+		filter: blur(1px);
 
 		img {
 			@include vendor('transition', 'transform #{_duration(transition)} ease-out');
