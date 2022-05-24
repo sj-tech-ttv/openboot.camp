@@ -2,7 +2,7 @@
 layout: post
 title:  "Staying Safer Online"
 date:   2022-05-21
-excerpt: "You can't be safe, but you can be safer"
+excerpt: "You can't eliminate every threat, but you can be safer"
 image: "/images/pic06.jpg"
 ---
 
@@ -29,28 +29,29 @@ There are plenty more sources of information. Some other sources you can use are
 [https://github.com/jivoi/awesome-osint](https://github.com/jivoi/awesome-osint)
 
 ## Foiling Corporate data collection
-While the previous section was more focused on knowing what information is publicly available about you, this will be more focused on 
+While the previous section was more focused on knowing what information is publicly available about you, this will be more focused on the information you give to companies for free, and how to reduce your footprint. Some of the things I've talked about above are important to remember for this section as well, such as EXIF data and reverse image searches to correlate your accounts, but much more important is 3rd party cookies and other web resources tracking you on behalf of websites you're not on.
 
 #### Ad Blockers
+Ad companies are notorious for their unscrupulous business practices. They're often the first users of new tracking 
+
 #### Other Privacy Extensions
+ - Privacy Badger is an extension from the EFF that blocks known trackers from websites you use. This prevents those 3rd parties from collecting data on what websites you browse.
+ - A User Agent Randomizer (there are several browser extensions that fit this bill) randomizes your user agent string. This is a piece of information that tells websites what operating system and browser you are using to access their website. This used to be useful when different browsers behaved differently given the same HTML or Javascript, but now that most browsers are standardized onto the same behavior, this doesn't do anything but tell the server information they don't need about who you are. Similarly, your browser dimensions don't need to be sent to the server, now that client-side CSS has relative spacing. Sometimes (actually, pretty frequently) user agents, browser dimensions, and other factors are so unique that only one person matches that criteria. This is why it's important to hide this information, otherwise tracking cookies aren't necessary, people can just use website logs to correlate your visit to a website with a visit to another website.
 
 ## Username safety
-Picking a username is a necessary part of being online. This is how people will know you and refer to you, so it's important to pick a username you like, that tells other people as little about you as possible. A popular format for usernames is to put your first initial and last name 
+Picking a username is a necessary part of being online. This is how people will know you and refer to you, so it's important to pick a username you like, that tells other people as little about you as possible. A popular format for email usernames is to put your first initial and last name and your birthday as numbers after your first and last. This is not advisable, as it can tell anyone quite a lot about you, especially if you have an uncommon enough first and last name.
 
 ## Password safety
+A lot of password safety discussion is around password complexity. Passwords should be fairly complex, but they should be memorable. Unsurprisingly, there are several relevant XKCD comics: https://xkcd.com/936/ https://xkcd.com/792/ 
 
 #### Never reuse passwords
+This is fairly common sense, but never use the same password between websites. Usually, when a website leaks passwords, they're hashed. Usually it's very difficult to correlate a hash with its original inputs, but it's sometimes possible for common passwords. At minimum, if password hashes are leaked, attackers will be able to correlate the hash with other leaked hashes, and use that to identify that you're the same person on both accounts.
+
 #### Password managers
+So if you're never going to reuse passwords, how do you remember all your passwords? The answer is that you do not. You entrust a password manager with your passwords. A password manager is a notebook or piece of software where you put your passwords. Physically writing your passwords down may seem counterintuitive, but so long as you keep your notebook in a safe place (e.g. in a safe that only you have the key to), it's safer than using a piece of software. The convenience of software is very high, though. Most password managers these days sync your passwords between your computer and your phone, so you don't have to open your notebook and search for passwords. I won't recommend any, but there's plenty of comparison blog posts out there about password managers.
+
 #### Have I been pwned?
-[https://haveibeenpwned.com/](https://haveibeenpwned.com/)
+[https://haveibeenpwned.com/](https://haveibeenpwned.com/) is a website that collates breach data to tell people if they have been included in a breech. Give them your email or a domain, and they will tell you if that email or domain has been subject to a breech. It's run by one dude, rather than by a corporation or foundation, and it's not monetized, so this is still relatively trustworthy.
 
-
-## Are you sure you're talking to who you think you're talking to?
-
-#### HTTPS certificates
-#### Email headers
-
-
-## Anonymity tools and how they fail
-
-#### VPNs and TOR
+#### 2 factor authentication
+2 factor authentication is a way of verifying that you are who you say you are through the use of something you know, like a username and password, and something you have, like a phone or hardware 2fa token. More mature websites offer this and encourage users to enable it, usually through adding a phone number so they can text you a security code. Unfortunately, phones are often subject to SIM jacking and fraud attempts through attackers by calling the phone service provider and asking them to port a phone number. This renders text message 2fa relatively insecure. If a website has an option to use a different factor for 2fa, email is safer. There are also apps like Google Authenticator and Microsoft Authenticator which, as apps on your phone, are not subject to SIM jacking and are therefore much safer. Most password managers also have the same functionality as these two apps. Finally, there are hardware 2 factor authentication keys, which are specially designed pieces of hardware that you plug into your computer to provide a second factor. Some common hardware 2fa devices include RSA tokens, Yubikeys, and Google's Titan security key. I have an Onlykey, which has some more functionality than other 2fa keys, but it seems quite a bit less durable than other manufacturers, so I can't recommend it for daily use on your keychain. Keeping it in a locked drawer or safe in your office would probably be fine, though.
