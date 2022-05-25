@@ -1,0 +1,4 @@
+deploy:
+  s3_bucket: openboot.camp
+  cloudfront_distribution: E2HFP65JRKJO1J
+  
