@@ -17,7 +17,7 @@ end
 # Rake Jekyll tasks
 task :build do
   puts 'Building _site...'.bold
-  Jekyll::Commands::Build.process(profile: true)
+  Jekyll::Commands::Build.process({profile: true})
 end
 
 task :clean do
@@ -25,11 +25,22 @@ task :clean do
   Jekyll::Commands::Clean.process({})
 end
 
-task :serve do
+task :webserve do
   puts 'Starting local webserver...'.bold
-  Jekyll::Commands::Serve.process({})
+  config = {
+    source:File.expand_path(Dir.pwd),
+    destination:File.expand_path("#{Dir.pwd}/_site"),
+    profile:true,
+    incremental:true,
+    watch:true,
+    serving:true,
+    url:'http://localhost:4000'
+  }
+  Jekyll::Commands::Build.process(config)
+  Jekyll::Commands::Serve.process(config)
 end
 
+task :serve => [:clean, :webserve]
 
 # Rake AWS tasks
 # Be sure your credentials are set in ~/.aws/credentials or in appropriate environment variables
@@ -40,7 +51,11 @@ task :s3_upload do
     next if File.directory?(file)
     puts "Uploading file #{file}"
     mime_type = MIME::Types.type_for(file).first.to_s
-    s3.put_object({key:file.split('/', 2)[1], body:File.read(file), bucket:deploy_config['deploy']['s3_bucket'], content_type:mime_type})
+    s3.put_object({
+      key:file.split('/', 2)[1],
+      body:File.read(file),
+      bucket:deploy_config['deploy']['s3_bucket'], content_type:mime_type
+    })
   end
 end
 
