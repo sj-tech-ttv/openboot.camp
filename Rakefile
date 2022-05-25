@@ -47,7 +47,7 @@ end
 task :cloudfront_invalidation do
   puts 'Invalidating Cloudfront cache...'.bold
   cloudfront = Aws::CloudFront::Client.new()
-  cloudfront.create_invalidation({
+  invalidation = cloudfront.create_invalidation({
     distribution_id: deploy_config['deploy']['cloudfront_distribution'],
     invalidation_batch: {
       paths: {
@@ -57,7 +57,7 @@ task :cloudfront_invalidation do
     caller_reference: Time.now.to_i.to_s,
     }
   })
-  puts 'Invalidation Sent'.bold
+  puts "Invalidation #{invalidation.invalidation.id} created!".bold
 end
 
 task :deploy => [:clean, :build, :s3_upload, :cloudfront_invalidation]
