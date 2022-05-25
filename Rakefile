@@ -2,6 +2,7 @@
 require 'aws-sdk-cloudfront'
 require 'aws-sdk-s3'
 require 'jekyll'
+require 'mime-types'
 require 'yaml'
 
 deploy_config = YAML.load_file('deploy_config.yml')
@@ -38,7 +39,8 @@ task :s3_upload do
   Dir["_site/**/*"].each do |file|
     next if File.directory?(file)
     puts "Uploading file #{file}"
-    s3.put_object({key:file.split('/', 2)[1], body:File.read(file), bucket:deploy_config['deploy']['s3_bucket']})
+    mime_type = MIME::Types.type_for(file).first.to_s
+    s3.put_object({key:file.split('/', 2)[1], body:File.read(file), bucket:deploy_config['deploy']['s3_bucket'], content_type:mime_type})
   end
 end
 
